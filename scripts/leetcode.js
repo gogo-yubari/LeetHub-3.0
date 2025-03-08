@@ -47,7 +47,7 @@ let difficulty = '';
 let uploadState = { uploading: false };
 
 /* Main function for uploading code to GitHub repo, and callback cb is called if success */
-const upload = (token, hook, code, problem, filename, sha, commitMsg, cb = undefined) => {
+const upload = (token, hook, code, difficulty, problem, filename, sha, commitMsg, cb = undefined) => {
   const URL = `https://api.github.com/repos/${hook}/contents/LeetCode/${difficulty}/${problem}/${filename}`;
 
   /* Define Payload */
@@ -214,7 +214,7 @@ function uploadGit(
             ? stats.shas[problemName][fileName]
             : '';
 
-        return upload(token, hook, code, problemName, fileName, sha, commitMsg, cb);
+        return upload(token, hook, code, problemName, fileName, sha, difficulty, commitMsg, cb);
       } else if (action === 'update') {
         return update(
           token,
