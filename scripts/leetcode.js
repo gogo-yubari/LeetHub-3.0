@@ -243,7 +243,7 @@ function uploadGit(
 }
 
 /* Gets updated GitHub data for the specific file in repo in question */
-async function getUpdatedData(token, hook, directory, filename) {
+async function getUpdatedData(token, hook, directory, filename, difficulty) {
   const URL = `https://api.github.com/repos/${hook}/contents/LeetCode/${difficulty}/${directory}/${filename}`;
 
   let options = {
